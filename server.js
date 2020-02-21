@@ -13,7 +13,7 @@ client.connect();
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.use(morgan('dev')); // http logging
 app.use(cors()); // enable CORS request
 
