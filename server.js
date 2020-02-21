@@ -28,6 +28,16 @@ app.get('/api/games', async(req, res) => {
         console.log(err);
     }
 });
+app.get('/', async(req, res) => {
+    try { 
+       
+        res.send('home page!');
+    }
+    catch (err){
+        console.log(err);
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log('server running on PORT', PORT);
