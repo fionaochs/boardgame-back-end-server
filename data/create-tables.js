@@ -21,10 +21,12 @@ async function run() {
                 publisher VARCHAR(256),
                 categories VARCHAR(256),
                 min_players VARCHAR(256),
-                max_players VARCHAR(256),
+                max_players VARCHAR(256)
             );
-        `);
-    }
+            `);
+       
+        console.log('completed');
+    }      
     catch (err) {
         console.log(err);
     }

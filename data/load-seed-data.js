@@ -1,7 +1,7 @@
 require('dotenv').config();
 const pg = require('pg');
 const Client = pg.Client;
-const games = require('./data/boardgameData.json');
+const games = require('./boardgameData.json');
 run();
 
 async function run() {
