@@ -12,7 +12,7 @@ async function run() {
         await client.connect();
         //connect to database
         await client.query(`
-            CREATE TABLE gameboards(
+            CREATE TABLE ${process.env.DB_NAME}(
                 id SERIAL PRIMARY KEY NOT NULL,
                 name VARCHAR(256) NOT NULL,
                 year INTEGER,

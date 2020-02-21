@@ -1,7 +1,7 @@
 require('dotenv').config();
 const pg = require('pg');
 const Client = pg.Client;
-const gameboards = require('./data/boardgameData.json');
+const games = require('./data/boardgameData.json');
 run();
 
 async function run() {
@@ -14,10 +14,10 @@ async function run() {
 
         //executes all async tasks at once for each gameboard data
         await Promise.all(
-            gameboards.map(game => {
+            games.map(game => {
                 //first argument in function is key to value pair for parameters in query
                 return client.query(`
-                INSERT INTO gameboards(name, year, image_url, price, publisher, categories, min_players, max_players)
+                INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher, categories, min_players, max_players)
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
                 `,
                 [game.name, game.year, game.image_url, game.price, game.publisher, game.categories, game.min_players, game.max_players]);
