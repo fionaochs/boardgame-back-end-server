@@ -17,7 +17,7 @@ async function run() {
                 name VARCHAR(256) NOT NULL,
                 year INTEGER,
                 image_url VARCHAR(256),
-                price INTEGER,
+                price FLOAT,
                 publisher VARCHAR(256),
                 categories VARCHAR(256),
                 min_players VARCHAR(256),

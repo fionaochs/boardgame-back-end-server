@@ -14,7 +14,7 @@ async function run() {
 
         //executes all async tasks at once for each gameboard data
         await Promise.all(
-            games.map(game => {
+            games.gameboardData.map(game => {
                 //first argument in function is key to value pair for parameters in query
                 return client.query(`
                 INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher, categories, min_players, max_players)
@@ -32,3 +32,6 @@ async function run() {
         client.end();
     }
 }
+
+// INSERT INTO games (name, year, image_url, price, publisher, categories, min_players, max_players)
+//    VALUES ("Gloomhaven", 2017, "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254920151-51ulRXlJ7LL.jpg", 139.99, "Cephalofair Games", "cooperative", 1, 4);
