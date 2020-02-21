@@ -12,7 +12,7 @@
     },
     {
         "name": "Catan",
-        "year_published": 1995,
+        "year": 1995,
         "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559258096678-51Eiofu9mqL.jpg",
         "price": 49.00,
         "publisher": "Catan Studio",
@@ -22,7 +22,7 @@
     },
     {
         "name": "Scythe",
-        "year_published": 2016,
+        "year": 2016,
         "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254971843-513-lrmjs2L.jpg",
         "price": 79.99,
         "publisher": "Stonemaier Games",
@@ -32,7 +32,7 @@
     },
     {
         "name": "Pandemic",
-        "year_published": 2008,
+        "year": 2008,
         "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254186140-51iNoyxoamL.jpg",
         "price": 39.99,
         "publisher": "Z-Man Games",
