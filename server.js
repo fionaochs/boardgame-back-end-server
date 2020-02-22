@@ -5,22 +5,23 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const pg = require('pg');
+// Application Setup
+const app = express();
 
 app.use(express.json());
 //read incoming json data
 app.use(express.urlencoded({ extended: true }));
 //parsing application
+app.use(morgan('dev')); // http logging
+app.use(cors()); // enable CORS request
+app.use(express.static('public')); // server files from /public folder
 
 const Client = pg.Client;
 const client = new Client(process.env.DATABASE_URL);
 client.connect();
 //connect to database client
 
-// Application Setup
-const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(morgan('dev')); // http logging
-app.use(cors()); // enable CORS request
 
 app.get('/api/games', async(req, res) => {
     try { 
