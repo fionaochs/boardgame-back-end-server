@@ -29,7 +29,7 @@
         "image_url": "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254971843-513-lrmjs2L.jpg",
         "price": 79.99,
         "publisher": "Stonemaier Games",
-        "categories": "cooperative",
+        "categories": "strategy",
         "min_players": 1,
         "max_players": 5,
         "have_played": true
