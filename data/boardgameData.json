@@ -8,7 +8,8 @@
         "publisher": "Cephalofair Games",
         "categories": "cooperative",
         "min_players": 1,
-        "max_players": 4
+        "max_players": 4,
+        "have_played": false
     },
     {
         "name": "Catan",
@@ -18,7 +19,9 @@
         "publisher": "Catan Studio",
         "categories": "strategy",
         "min_players": 3,
-        "max_players": 4
+        "max_players": 4,
+        "have_played": true
+
     },
     {
         "name": "Scythe",
@@ -28,7 +31,9 @@
         "publisher": "Stonemaier Games",
         "categories": "cooperative",
         "min_players": 1,
-        "max_players": 5
+        "max_players": 5,
+        "have_played": true
+
     },
     {
         "name": "Pandemic",
@@ -38,6 +43,7 @@
         "publisher": "Z-Man Games",
         "categories": "cooperative",
         "min_players": 2,
-        "max_players": 4
+        "max_players": 4,
+        "have_played": false
     }
 ]}
