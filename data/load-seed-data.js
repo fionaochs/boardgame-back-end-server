@@ -17,10 +17,10 @@ async function run() {
             games.gameboardData.map(game => {
                 //first argument in function is key to value pair for parameters in query
                 return client.query(`
-                INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher, categories, min_players, max_players)
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
+                INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher, categories, min_players, max_players, have_played)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
                 `,
-                [game.name, game.year, game.image_url, game.price, game.publisher, game.categories, game.min_players, game.max_players]);
+                [game.name, game.year, game.image_url, game.price, game.publisher, game.categories, game.min_players, game.max_players, game.have_played]);
                 //second argument is array of values cooresponding to each parameter in query
             })
         );
