@@ -19,7 +19,7 @@ async function run() {
         const savedPublishers = await Promise.all(
             publishers.publisherData.map(async publisher => {
                 const result = await client.query(`
-                    INSERT INTO publishers (name)
+                    INSERT INTO publishers (publisher)
                     VALUES ($1)
                     RETURNING *;
                 `,
