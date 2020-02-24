@@ -35,7 +35,7 @@ async function run() {
                 // Find the corresponding type id
                 // find the id of the matching publisher name
                 const publisherId = savedPublishers.find(publisher => {
-                    return publisher.name === game.publisher;
+                    return publisher.publisher === game.publisher;
                 });
                 //use publisherId to tie in cooresponding array parameter
 
