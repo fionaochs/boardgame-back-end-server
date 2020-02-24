@@ -28,7 +28,8 @@ app.get('/api/games', async(req, res) => {
         const results = await client.query(`
         SELECT * FROM games
             publishers.name as publisher
-        JOIN publishers 
+        FROM games game
+        JOIN publishers publisher
         ON games.publisher_id = publisher.id
         ORDER BY games.name;
     `);
