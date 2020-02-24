@@ -27,7 +27,7 @@ app.get('/api/games', async(req, res) => {
     try { 
         const results = await client.query(`
         SELECT * FROM games
-            publishers.name as publisher
+            publishers_id as publisher
         FROM games game
         JOIN publishers publisher
         ON games.publisher_id = publisher.id
