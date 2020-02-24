@@ -17,7 +17,7 @@ async function run() {
         // the id of the type. Notice use of RETURNING:
         
         const savedPublishers = await Promise.all(
-            publishers.map(async publisher => {
+            publishers.publisherData.map(async publisher => {
                 const result = await client.query(`
                     INSERT INTO publishers (name)
                     VALUES ($1)
