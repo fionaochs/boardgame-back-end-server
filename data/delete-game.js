@@ -12,12 +12,9 @@ async function run() {
         await client.connect();
         //connect to database
         await client.query(`
-            CREATE TABLE publishers (
-                id SERIAL PRIMARY KEY NOT NULL,
-                name VARCHAR(256)
-            );
 
-            CREATE TABLE ${process.env.DB_NAME}(
+            DELETE FROM ${process.env.DB_NAME} WHERE 
+            (
                 id SERIAL PRIMARY KEY NOT NULL,
                 name VARCHAR(256) NOT NULL,
                 year INTEGER,

@@ -26,8 +26,16 @@ const PORT = process.env.PORT || 3000;
 app.get('/api/games', async(req, res) => {
     try { 
         const results = await client.query(`
-        SELECT * from ${process.env.DB_NAME};
-        `);
+        SELECT * FROM games
+            publishers.name as publisher
+        JOIN publishers 
+        ON games.publisher_id = publisher.id
+        ORDER BY games.name;
+    `);
+       //select all from games
+       //get publishers table publisher name
+       //join tables on matching _id and .id
+       //order game table by name
         res.json(results.rows);
     }
     catch (err){
@@ -54,6 +62,17 @@ app.post('/api/games', async(req, res) => {
         [req.body.name, req.body.year, req.body.image_url, req.body.price, req.body.publisher, req.body.categories, req.body.min_players, req.body.max_players, req.body.have_played]);
         
         res.json(results.rows);       
+    }
+    catch (err){
+        console.log(err);
+    }
+});
+app.post('/api/deletegame', async(req, res) => {
+    try {
+        const results = await client.query(`
+        DELETE FROM ${process.env.DB_NAME} WHERE id=games.id;
+    `,  
+        res.json(results.rows));       
     }
     catch (err){
         console.log(err);

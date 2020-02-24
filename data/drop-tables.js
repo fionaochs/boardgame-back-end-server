@@ -11,6 +11,8 @@ async function run() {
         await client.connect();
         await client.query(`
         DROP TABLE IF EXISTS ${process.env.DB_NAME};
+        DROP TABLE IF EXISTS publishers;
+
         `);
     }
     catch (err) {
