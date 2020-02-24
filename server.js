@@ -53,7 +53,7 @@ app.post('/api/games', async(req, res) => {
     `,
         [req.body.name, req.body.year, req.body.image_url, req.body.price, req.body.publisher, req.body.categories, req.body.min_players, req.body.max_players, req.body.have_played]);
         
-        res.json(results);       
+        res.json(results.rows);       
     }
     catch (err){
         console.log(err);
