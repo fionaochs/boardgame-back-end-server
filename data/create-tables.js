@@ -23,7 +23,7 @@ async function run() {
                 year INTEGER,
                 image_url VARCHAR(256),
                 price FLOAT,
-                publisher_id INTEGER REFERENCES NOT NULL publishers(id),
+                publisher_id INTEGER NOT NULL REFERENCES publishers(id),
                 categories VARCHAR(256),
                 min_players VARCHAR(256),
                 max_players VARCHAR(256),
