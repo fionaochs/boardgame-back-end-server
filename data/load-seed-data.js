@@ -15,11 +15,13 @@ async function run() {
         //connect to database
         // First save types and get each returned row which has
         // the id of the type. Notice use of RETURNING:
-        
+        //promise.all takes in array of promises and returns array of responses
+        //doesnt move on till all done, more than one promise at once
+
         const savedPublishers = await Promise.all(
             publishers.publisherData.map(async publisher => {
                 const result = await client.query(`
-                    INSERT INTO publishers (publisher)
+                    INSERT INTO publishers (name)
                     VALUES ($1)
                     RETURNING *;
                 `,
@@ -34,8 +36,8 @@ async function run() {
             games.gameboardData.map(game => {
                 // Find the corresponding type id
                 // find the id of the matching publisher name
-                const publisherId = savedPublishers.find(publisher => {
-                    return publisher.publisher === game.publisher;
+                const publisher = savedPublishers.find(publisher => {
+                    return publisher.name === game.publisher;
                 });
                 //use publisherId to tie in cooresponding array parameter
 
@@ -44,7 +46,7 @@ async function run() {
                 INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher_id, categories, min_players, max_players, have_played)
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
                 `,
-                [game.name, game.year, game.image_url, game.price, publisherId.id, game.categories, game.min_players, game.max_players, game.have_played]);
+                [game.name, game.year, game.image_url, game.price, publisher.id, game.categories, game.min_players, game.max_players, game.have_played]);
                 //second argument is array of values cooresponding to each parameter in query
             })
         );

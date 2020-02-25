@@ -27,10 +27,8 @@ app.get('/api/games', async(req, res) => {
     try { 
         const results = await client.query(`
         SELECT * FROM games
-            publishers_id as publisher
-        FROM games game
-        JOIN publishers publisher
-        ON games.publisher_id = publisher.id
+        JOIN publishers 
+        ON games.publisher_id = publishers.id
         ORDER BY games.name;
     `);
        //select all from games
@@ -56,11 +54,11 @@ app.get('/', async(req, res) => {
 app.post('/api/games', async(req, res) => {
     try {
         const results = await client.query(`
-        INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher, categories, min_players, max_players, have_played)
+        INSERT INTO ${process.env.DB_NAME} (name, year, image_url, price, publisher_id, categories, min_players, max_players, have_played)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)   
         RETURNING *;
     `,
-        [req.body.name, req.body.year, req.body.image_url, req.body.price, req.body.publisher, req.body.categories, req.body.min_players, req.body.max_players, req.body.have_played]);
+        [req.body.name, req.body.year, req.body.image_url, req.body.price, req.body.publisher_id, req.body.categories, req.body.min_players, req.body.max_players, req.body.have_played]);
         
         res.json(results.rows);       
     }
@@ -68,12 +66,14 @@ app.post('/api/games', async(req, res) => {
         console.log(err);
     }
 });
-app.post('/api/deletegame', async(req, res) => {
+app.delete(`/api/games/:id`, async(req, res) => {
     try {
         const results = await client.query(`
-        DELETE FROM ${process.env.DB_NAME} WHERE id=games.id;
+        DELETE FROM ${process.env.DB_NAME} WHERE id=$1;
     `,  
-        res.json(results.rows));       
+        [req.params.id]);
+        //req.params relates to :id in URL /games/:id
+        res.json(results.rows);       
     }
     catch (err){
         console.log(err);

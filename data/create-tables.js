@@ -14,7 +14,7 @@ async function run() {
         await client.query(`
             CREATE TABLE publishers (
                 id SERIAL PRIMARY KEY NOT NULL,
-                publisher VARCHAR(256)
+                name VARCHAR(256)
             );
 
             CREATE TABLE ${process.env.DB_NAME}(
@@ -23,7 +23,7 @@ async function run() {
                 year INTEGER,
                 image_url VARCHAR(256),
                 price FLOAT,
-                publisher_id INTEGER REFERENCES publishers(id),
+                publisher_id INTEGER REFERENCES NOT NULL publishers(id),
                 categories VARCHAR(256),
                 min_players VARCHAR(256),
                 max_players VARCHAR(256),
